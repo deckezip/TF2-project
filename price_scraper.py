@@ -182,8 +182,8 @@ class PriceScraper(object):
         # wb_prices.save('prices.xls')
         # wb_sales.save('sales.xls')
 
-login = 'DeckeZip'
-password = 'WeWillRockYou'
+login = ''
+password = ''
 
 
 def filter_names():
