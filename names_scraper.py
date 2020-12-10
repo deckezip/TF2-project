@@ -5,8 +5,8 @@ import json
 import requests
 import steam.webauth as wa
 
-login = 'DeckeZip'
-password = 'WeWillRockYou'
+login = ''
+password = ''
 gameID = '440'
 
 user = wa.WebAuth(login)
