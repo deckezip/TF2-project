@@ -1,5 +1,19 @@
 library(dplyr)
 library(plyr)
+library(zoo)
+library(xts)
+library(lubridate)
+library(urca)
+library(dygraphs)
+library(quantmod)
+library(ggplot2)
+library(ggfortify)
+library(forecast)
+library(reshape2)
+library(fGarch)
+library(rugarch)
+library(quantmod)
+
 prices_new <- prices[,-1]
 prices_new <- prices_new[colSums(prices_new) > 14300]
 
@@ -59,20 +73,6 @@ colnames(portfel_total) <- c("Date", "Genuine Grandmaster", "Strange Professiona
 portfel_total
 #Мы получили временной ряд стоимости 
 ###Строим модель анализа временного ряда
-library(zoo)
-library(xts)
-library(lubridate)
-library(urca)
-install.packages("dygraphs")
-library(dygraphs)
-install.packages("quantmod")
-library(quantmod)
-library(ggplot2)
-install.packages("ggfortify")
-library(ggfortify)
-library(forecast)
-library(reshape2)
-
 TS_Portfel <- cbind.data.frame(prices$X, portfel_time_series)
 TS_Portfel
 colnames(TS_Portfel) <- c("date", "value")
@@ -135,11 +135,6 @@ zprts <- read.zoo(prts_1)
 
 autoplot(zprts, alpha = 0.7, facet = NULL, main = "Прогноз стоимости портфеля в Steam (в долларах США)")
 ###GARCH
-
-library(fGarch)
-
-library(rugarch)
-
 N<-1400
 test<-TS_Portfel_1[(N+1):length(TS_Portfel_1)]
 VaR<-rep(0,length(test))
@@ -200,8 +195,6 @@ colnames(portfel_total_past_year) <- c("Date", "Strange Professional Killstreak 
 portfel_total_past_year
 portfel_time_series_past_year
 
-
-library("quantmod")
 Sys.setlocale("LC_TIME", "C")
 getSymbols(Symbols="AAPL", from ="2019-11-27", to = "2020-11-27")
 head(AAPL)
